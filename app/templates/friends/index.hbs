@@ -1,10 +1,22 @@
 <h1>Friends Index</h1>
-<h2>Total friends: {{model.length}}</h2>
 
-<ul>
-  {{#each friend in model}}
-    <li>{{link-to friend.fullName 'friends.show' friend}}</li>
-  {{/each}}
-</ul>
+<h2>Friends: {{model.length}}</h2>
+
+<table cellspacing="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each friend in model}}
+      <tr>
+        <td>{{link-to friend.fullName 'friends.show' friend}}</td>
+        <td><a href="#" {{action "delete" friend}}>delete</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
 
 {{link-to "Add new friend" 'friends.new'}}
